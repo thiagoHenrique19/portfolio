@@ -96,4 +96,24 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: nowrap row;
+}
+
+.footer-image{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-image: url("imagens/WhatsApp\ Image\ 2024-12-21\ at\ 20.53.42.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#footer-p {
+    margin-left: 10vw;
+}
     
