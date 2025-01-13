@@ -105,15 +105,53 @@ footer {
 }
 
 .footer-image{
-    width: 250px;
-    height: 250px;
+    width: 20vw;
+    height: 20vw;
     border-radius: 50%;
     background-image: url("imagens/WhatsApp\ Image\ 2024-12-21\ at\ 20.53.42.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-#footer-p {
-    margin-left: 10vw;
+.gmail {
+    margin-top: 3vh;
 }
+
+@media screen and (max-width: 600px) {
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .gmail {
+        margin-left: 4vw;
+    }
+ 
+        
+}
+    
+
+@media screen and (min-width: 601px) {
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .gmail {
+        margin-left: 6vw;
+    }
+ 
+      
+}
+
+@media screen and (min-width: 1200px) {
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .gmail {
+        margin-left: 8vw;
+    }
+ 
+      
+}
+
     
