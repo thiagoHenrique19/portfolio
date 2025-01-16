@@ -96,4 +96,63 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: nowrap row;
+}
+
+.footer-image{
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    background-image: url("imagens/WhatsApp\ Image\ 2025-01-16\ at\ 14.59.41\ \(1\).jpeg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.gmail {
+    margin-top: 3vh;
+}
+
+@media screen and (max-width: 600px) {
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .gmail {
+        margin-left: 4vw;
+    }
+ 
+        
+}
+    
+
+@media screen and (min-width: 601px) {
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .gmail {
+        margin-left: 6vw;
+    }
+ 
+      
+}
+
+@media screen and (min-width: 1200px) {
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .gmail {
+        margin-left: 8vw;
+    }
+ 
+      
+}
+
     
