@@ -38,11 +38,11 @@ export function Skills() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="habilidades" className="py-24 bg-dark-900 relative">
+    <section id="habilidades" className="py-14 bg-dark-900 relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 text-sm font-mono text-primary-400 mb-3">
             <span className="w-8 h-px bg-primary-400 inline-block" />
             <Layers className="w-4 h-4" />
@@ -57,12 +57,12 @@ export function Skills() {
           </p>
         </div>
 
-        <div ref={ref} className="space-y-12">
+        <div ref={ref} className="space-y-8">
           {categories.map((cat) => {
             const catSkills = skills.filter((s) => s.category === cat);
             return (
               <div key={cat}>
-                <h3 className="text-sm font-mono text-white/40 uppercase tracking-widest mb-6 flex items-center gap-3">
+                <h3 className="text-sm font-mono text-white/40 uppercase tracking-widest mb-4 flex items-center gap-3">
                   <span className="w-4 h-px bg-white/20" />
                   {categoryLabels[cat]}
                   <span className="flex-1 h-px bg-white/5" />

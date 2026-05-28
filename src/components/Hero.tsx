@@ -45,7 +45,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden animated-gradient"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden animated-gradient"
     >
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary-600/20 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
@@ -76,26 +76,26 @@ export function Hero() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm text-white/70 mb-8 animate-fade-in border border-white/10">
+        <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm text-white/70 mb-5 animate-fade-in border border-white/10">
           <Sparkles className="w-4 h-4 text-accent-400 animate-spin-slow" />
           <span>Disponivel para novas oportunidades</span>
           <span className="w-2 h-2 rounded-full bg-accent-400 animate-pulse" />
         </div>
 
-        <h1 className="text-5xl sm:text-7xl font-black mb-4 leading-tight animate-slide-up">
+        <h1 className="text-5xl sm:text-7xl font-black mb-3 leading-tight animate-slide-up">
           <span className="text-white">Ola, eu sou</span>
           <br />
           <span className="gradient-text">Thiago Henrique</span>
         </h1>
 
-        <div className="h-16 flex items-center justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <div className="h-12 flex items-center justify-center mb-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <p className="text-2xl sm:text-3xl font-light text-white/70">
             <span className="font-mono text-primary-300">{displayed}</span>
             <span className="cursor" />
           </p>
         </div>
 
-        <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in" style={{ animationDelay: '0.5s' }}>
+        <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto mb-7 leading-relaxed animate-fade-in" style={{ animationDelay: '0.5s' }}>
           Desenvolvedor apaixonado por criar experiencias web incriveis.
           Explorando o universo de Java, Spring, React e muito mais.
         </p>
@@ -120,7 +120,7 @@ export function Hero() {
           </button>
         </div>
 
-        <div className="flex gap-4 justify-center mt-8 animate-fade-in" style={{ animationDelay: '0.9s' }}>
+        <div className="flex gap-4 justify-center mt-6 animate-fade-in" style={{ animationDelay: '0.9s' }}>
           <a
             href="https://github.com/thiagoHenrique19"
             target="_blank"
@@ -137,7 +137,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="flex flex-wrap gap-2 justify-center mt-12 animate-fade-in" style={{ animationDelay: '1.1s' }}>
+        <div className="flex flex-wrap gap-2 justify-center mt-8 animate-fade-in" style={{ animationDelay: '1.1s' }}>
           {['Java', 'Spring', 'React', 'TypeScript', 'MySQL', 'Linux'].map((tech) => (
             <span
               key={tech}

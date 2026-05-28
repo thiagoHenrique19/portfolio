@@ -12,12 +12,12 @@ export function About() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="sobre" className="py-24 bg-dark-800 relative">
+    <section id="sobre" className="py-14 bg-dark-800 relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 text-sm font-mono text-primary-400 mb-3">
             <span className="w-8 h-px bg-primary-400 inline-block" />
             <User className="w-4 h-4" />
@@ -31,7 +31,7 @@ export function About() {
 
         <div
           ref={ref}
-          className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center transition-all duration-1000 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -40,7 +40,7 @@ export function About() {
               <div className="absolute -inset-4 rounded-full border border-primary-500/20 animate-spin-slow" />
               <div className="absolute -inset-8 rounded-full border border-accent-500/10 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '12s' }} />
 
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden glow-purple border-2 border-primary-500/40">
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full overflow-hidden glow-purple border-2 border-primary-500/40">
                 <img
                   src={profilePhoto}
                   alt="Thiago Henrique"
@@ -69,19 +69,19 @@ export function About() {
           <div className="space-y-6">
             <div className="space-y-4 text-white/70 leading-relaxed">
               <p className="text-lg">
-                Sou um desenvolvedor web focado na criacao de{' '}
-                <span className="text-white font-medium">experiencias digitais eficientes e de qualidade</span>.
-                Iniciei minha trajetoria na tecnologia atraves do programa de aprendiz na{' '}
+                Sou um desenvolvedor web focado na criação de{' '}
+                <span className="text-white font-medium">experiências digitais eficientes e de qualidade</span>.
+                Iniciei minha trajetória na tecnologia através do programa de aprendiz na{' '}
                 <span className="text-primary-400 font-medium">Segala's Alimentos</span>,
-                onde desenvolvi uma base solida e direcionei minha carreira para o desenvolvimento de software.
+                onde desenvolvi uma base sólida e direcionei minha carreira para o desenvolvimento de software.
               </p>
               <p>
                 Atuo diretamente no{' '}
                 <span className="text-accent-400 font-medium">e-commerce da empresa</span>,
-                participando da implementacao e evolucao de funcionalidades que impactam diretamente
-                a experiencia dos clientes. Possuo experiencia no desenvolvimento back-end com{' '}
+                participando da implementação e evolução de funcionalidades que impactam diretamente
+                a experiência dos clientes. Possuo experiência no desenvolvimento back-end com{' '}
                 <span className="text-accent-400 font-medium">Java e Spring Framework</span>,
-                alem de atuacao com bancos de dados{' '}
+                além de atuação com bancos de dados{' '}
                 <span className="text-accent-400 font-medium">MySQL e PostgreSQL</span>,
                 testes com <span className="text-accent-400 font-medium">JUnit 5</span>{' '}
                 e versionamento com <span className="text-accent-400 font-medium">GitHub</span>.
@@ -89,10 +89,10 @@ export function About() {
               <p>
                 No front-end, trabalho com{' '}
                 <span className="text-primary-400 font-medium">React, TypeScript, HTML e CSS</span>,
-                desenvolvendo interfaces e contribuindo na construcao de novas funcionalidades.
+                desenvolvendo interfaces e contribuindo na construção de novas funcionalidades.
                 Atualmente, estou me aprofundando cada vez mais no desenvolvimento{' '}
                 <span className="text-white font-medium">full-stack</span>,
-                com foco em entregar solucoes completas, performaticas e alinhadas as necessidades do negocio.
+                com foco em entregar soluções completas, performáticas e alinhadas às necessidades do negócio.
               </p>
             </div>
 

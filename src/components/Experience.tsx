@@ -50,12 +50,12 @@ export function Experience() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="experiencia" className="py-24 bg-dark-800 relative">
+    <section id="experiencia" className="py-14 bg-dark-800 relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 text-sm font-mono text-primary-400 mb-3">
             <span className="w-8 h-px bg-primary-400 inline-block" />
             <Briefcase className="w-4 h-4" />
@@ -69,7 +69,7 @@ export function Experience() {
 
         <div
           ref={ref}
-          className="relative space-y-8 pl-8 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-gradient-to-b before:from-primary-500/80 before:via-accent-500/50 before:to-transparent"
+          className="relative space-y-5 pl-8 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-gradient-to-b before:from-primary-500/80 before:via-accent-500/50 before:to-transparent"
         >
           {experiences.map((exp, index) => (
             <div

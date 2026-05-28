@@ -1,5 +1,5 @@
 import { useInView } from '../hooks/useInView';
-import { FolderOpen, Github, Sparkles, ShoppingCart, Monitor } from 'lucide-react';
+import { FolderOpen, Github, Sparkles, ShoppingCart, Store } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -26,14 +26,14 @@ const projects: Project[] = [
     badge: 'Profissional',
   },
   {
-    title: 'Tela de Dispositivos Conectados',
-    description: 'Gerenciamento de sessoes ativas no e-commerce',
+    title: 'Von Zu Hause',
+    description: 'Site institucional para marca de produtos coloniais artesanais',
     longDescription:
-      'Funcionalidade desenvolvida dentro do e-commerce da empresa que exibe todos os dispositivos atualmente conectados na conta do usuario. A tela lista cada sessao ativa com informacoes como tipo de dispositivo, navegador e data do ultimo acesso, permitindo que o usuario encerre sessoes remotamente para maior controle e seguranca da conta.',
-    tags: ['Java', 'Spring', 'React', 'TypeScript', 'JWT', 'MySQL', 'Seguranca'],
-    gradient: 'from-primary-600/30 to-accent-600/30',
-    icon: Monitor,
-    badge: 'Profissional',
+      'Landing page completa para a Von Zu Hause, marca de produtos coloniais de Blumenau (SC). Desenvolvimento de site com identidade visual que remete às tradições alemãs, apresentando portfólio de produtos artesanais, valores da marca e canais de contato.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    github: 'https://github.com/thiagoHenrique19',
+    gradient: 'from-amber-600/30 to-emerald-600/30',
+    icon: Store,
   },
   {
     title: 'Animated Border Login',
@@ -45,27 +45,17 @@ const projects: Project[] = [
     gradient: 'from-purple-600/30 to-primary-600/30',
     icon: FolderOpen,
   },
-  {
-    title: 'Challenge of My Learning',
-    description: 'Desafio pratico das ferramentas aprendidas',
-    longDescription:
-      'Projeto desafio que consolida os conhecimentos adquiridos durante a jornada de aprendizado. Envolve as principais ferramentas e tecnologias estudadas ao longo da formacao.',
-    tags: ['Java', 'Spring', 'MySQL', 'JUnit5'],
-    github: 'https://github.com/thiagoHenrique19',
-    gradient: 'from-accent-600/30 to-teal-600/30',
-    icon: FolderOpen,
-  },
 ];
 
 export function Projects() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="projetos" className="py-24 bg-dark-900 relative">
+    <section id="projetos" className="py-14 bg-dark-900 relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 text-sm font-mono text-primary-400 mb-3">
             <span className="w-8 h-px bg-primary-400 inline-block" />
             <FolderOpen className="w-4 h-4" />
@@ -155,7 +145,7 @@ export function Projects() {
           })}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-8">
           <a
             href="https://github.com/thiagoHenrique19"
             target="_blank"
