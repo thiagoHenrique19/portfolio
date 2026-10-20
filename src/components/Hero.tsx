@@ -32,15 +32,7 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative">
-      <div className="dots absolute inset-0 pointer-events-none" />
-      <div className="relative flex flex-col items-center text-center w-[85%] max-w-3xl mx-auto pt-32 pb-6">
-      <div className="inline-flex items-center gap-2 text-xs font-light text-soft border border-line bg-card rounded-full px-4 py-1.5 mb-6">
-        <span className="relative flex w-2 h-2">
-          <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-60" />
-          <span className="relative w-2 h-2 rounded-full bg-white" />
-        </span>
-        Disponível para novos projetos
-      </div>
+      <div className="relative flex flex-col items-center text-center w-[85%] max-w-3xl mx-auto pt-36 pb-6">
       <p className="text-sm font-light text-mute">Olá, mundo! Eu sou</p>
       <h1 className="text-5xl sm:text-7xl font-bold mt-2">
         Thiago <span className="text-mute">Henrique</span>

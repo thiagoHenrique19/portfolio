@@ -50,7 +50,6 @@ export function Experience() {
                 e.current ? 'bg-white' : 'bg-mute'
               }`}
             >
-              {e.current && <span className="absolute -inset-1 rounded-full bg-white animate-ping opacity-50" />}
             </span>
             <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
               <h3 className="font-bold text-lg">{e.role}</h3>

@@ -37,16 +37,11 @@ export function Projects() {
         {projects.map((p, i) => (
           <Reveal key={p.title} delay={i * 100} className="h-full">
           <article className="card-lift group bg-card border border-line rounded-2xl p-5 flex flex-col text-center h-full">
-            <div className="rounded-xl bg-[#0f0f0f] border border-line overflow-hidden mb-5">
-              <div className="flex items-center gap-1.5 px-3 py-2 border-b border-line">
-                <span className="w-2 h-2 rounded-full bg-line" />
-                <span className="w-2 h-2 rounded-full bg-line" />
-                <span className="w-2 h-2 rounded-full bg-line" />
-                <span className="ml-2 flex-1 h-3 rounded bg-line/60" />
-              </div>
-              <div className="h-28 flex items-center justify-center">
-                <p.icon className="w-12 h-12 text-mute group-hover:text-white group-hover:scale-110 transition-all duration-300" strokeWidth={1.2} />
-              </div>
+            <div className="h-28 rounded-xl bg-[#0f0f0f] border border-line mb-5 flex items-end justify-between p-4">
+              <span className="text-6xl font-bold leading-none text-line group-hover:text-mute transition-colors duration-300">
+                0{i + 1}
+              </span>
+              <p.icon className="w-5 h-5 text-mute" strokeWidth={1.5} />
             </div>
             <h3 className="font-bold mb-2">{p.title}</h3>
             <p className="font-light text-xs text-mute leading-relaxed mb-4">{p.description}</p>
