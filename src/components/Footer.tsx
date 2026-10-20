@@ -1,85 +1,49 @@
-import { Code2, Github, Mail, Heart } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+
+const links = [
+  { id: 'sobre', label: 'Sobre' },
+  { id: 'habilidades', label: 'Habilidades' },
+  { id: 'experiencia', label: 'Experiência' },
+  { id: 'projetos', label: 'Projetos' },
+  { id: 'contato', label: 'Contatos' },
+];
 
 export function Footer() {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <footer className="relative bg-dark-900 border-t border-white/5 py-12">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/40 to-transparent" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
-                <Code2 className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-mono text-sm font-semibold">
-                <span className="gradient-text">TH</span>
-                <span className="text-white/60">.dev</span>
-              </span>
-            </div>
-            <p className="text-white/40 text-sm leading-relaxed">
-              Desenvolvedor web apaixonado por construir experiencias digitais incriveis.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold text-white/70 mb-4">Navegacao</h4>
-            <ul className="space-y-2">
-              {[
-                { id: 'sobre', label: 'Sobre mim' },
-                { id: 'habilidades', label: 'Habilidades' },
-                { id: 'experiencia', label: 'Experiencia' },
-                { id: 'projetos', label: 'Projetos' },
-                { id: 'contato', label: 'Contato' },
-              ].map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => scrollTo(link.id)}
-                    className="text-sm text-white/40 hover:text-white/70 transition-colors"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold text-white/70 mb-4">Contato</h4>
-            <div className="space-y-2">
-              <a
-                href="mailto:thiagohenriquedeoliveira015@gmail.com"
-                className="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Gmail</span>
-              </a>
-              <a
-                href="https://github.com/thiagoHenrique19"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                <span>GitHub</span>
-              </a>
-            </div>
-          </div>
+    <footer className="bg-white text-black rounded-t-2xl p-8 mt-6">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+        <div className="md:col-span-2">
+          <p className="text-xs font-light">Website feito por:</p>
+          <p className="text-3xl font-bold">Thiago Henrique</p>
+          <p className="text-xs font-light mt-2 max-w-md">
+            Website pessoal de portfólio, feito com React, TypeScript e Tailwind CSS.
+          </p>
         </div>
-
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-white/30 flex items-center gap-1">
-            Feito com <Heart className="w-3 h-3 text-primary-400" /> por Thiago Henrique &mdash; {new Date().getFullYear()}
-          </p>
-          <p className="text-xs font-mono text-white/20">
-            React + TypeScript + Tailwind CSS
-          </p>
+        <div className="flex md:justify-end items-start gap-6">
+          <ul className="text-sm space-y-1">
+            {links.map((l) => (
+              <li key={l.id}>
+                <button
+                  onClick={() => document.getElementById(l.id)?.scrollIntoView({ behavior: 'smooth' })}
+                  className="hover:underline underline-offset-4"
+                >
+                  {l.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center hover:-translate-y-1 transition-transform"
+            aria-label="Voltar ao topo"
+          >
+            <ArrowUp className="w-4 h-4" />
+          </button>
         </div>
       </div>
+      <p className="max-w-5xl mx-auto text-xs font-light mt-8 pt-4 border-t border-black/15">
+        © {new Date().getFullYear()} Thiago Henrique
+      </p>
     </footer>
   );
 }

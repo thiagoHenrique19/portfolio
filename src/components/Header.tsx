@@ -1,126 +1,85 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 
 const navLinks = [
-  { id: 'sobre', label: 'Sobre' },
+  { id: 'sobre', label: 'Sobre mim' },
   { id: 'habilidades', label: 'Habilidades' },
-  { id: 'experiencia', label: 'Experiencia' },
+  { id: 'experiencia', label: 'Experiência' },
   { id: 'projetos', label: 'Projetos' },
-  { id: 'contato', label: 'Contato' },
+  { id: 'contato', label: 'Contatos' },
 ];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const activeSection = useScrollSpy(navLinks.map((l) => l.id));
+  const [progress, setProgress] = useState(0);
+  const active = useScrollSpy(navLinks.map((l) => l.id));
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
+  const go = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'glass border-b border-white/10 py-3'
-          : 'py-5 bg-transparent'
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+        scrolled ? 'bg-bg/80 backdrop-blur-md' : 'bg-bg'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2 group"
-          >
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Code2 className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-mono text-sm font-semibold text-white/90 group-hover:text-white transition-colors">
-              <span className="gradient-text">TH</span>
-              <span className="text-white/60">.dev</span>
-            </span>
-          </button>
+      <div className="relative w-[90%] max-w-6xl mx-auto h-20 flex items-center justify-between border-b border-line">
+        <span className="absolute -bottom-px left-0 h-px bg-white" style={{ width: `${progress}%` }} />
 
-          <ul className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <li key={link.id}>
-                <button
-                  onClick={() => scrollTo(link.id)}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
-                    activeSection === link.id
-                      ? 'text-white'
-                      : 'text-white/60 hover:text-white/90'
-                  }`}
-                >
-                  {activeSection === link.id && (
-                    <span className="absolute inset-0 rounded-lg bg-white/10" />
-                  )}
-                  <span className="relative">{link.label}</span>
-                  {activeSection === link.id && (
-                    <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-400" />
-                  )}
-                </button>
-              </li>
-            ))}
-          </ul>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="font-bold text-xl"
+          aria-label="Topo"
+        >
+          <span className="text-mute">T</span>H
+        </button>
 
-          <div className="hidden md:block">
-            <button
-              onClick={() => scrollTo('contato')}
-              className="px-5 py-2 text-sm font-semibold bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full hover:shadow-lg hover:shadow-primary-500/30 hover:scale-105 transition-all duration-300"
-            >
-              Fale comigo
-            </button>
-          </div>
-
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg glass text-white/80 hover:text-white transition-colors"
-          >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </nav>
-
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 glass rounded-2xl border border-white/10 animate-slide-up">
-            <ul className="flex flex-col gap-1 px-3">
-              {navLinks.map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => scrollTo(link.id)}
-                    className={`w-full text-left px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
-                      activeSection === link.id
-                        ? 'bg-white/10 text-white'
-                        : 'text-white/60 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-3 px-3">
+        <ul className="hidden md:flex gap-8">
+          {navLinks.map((l) => (
+            <li key={l.id}>
               <button
-                onClick={() => scrollTo('contato')}
-                className="w-full py-3 text-sm font-semibold bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-xl"
+                onClick={() => go(l.id)}
+                className={`relative py-1 text-sm font-medium transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:bg-white after:transition-all after:duration-300 ${
+                  active === l.id ? 'text-white after:w-full' : 'text-mute hover:text-white after:w-0 hover:after:w-full'
+                }`}
               >
-                Fale comigo
+                {l.label}
               </button>
-            </div>
-          </div>
-        )}
+            </li>
+          ))}
+        </ul>
+
+        <button onClick={() => setOpen(!open)} className="md:hidden" aria-label="Menu">
+          {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+        </button>
       </div>
+
+      {open && (
+        <ul className="md:hidden w-[90%] mx-auto bg-card rounded-2xl mt-2 px-4">
+          {navLinks.map((l) => (
+            <li key={l.id} className="border-b border-line last:border-b-0">
+              <button onClick={() => go(l.id)} className="w-full text-left py-4 font-light">
+                {l.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </header>
   );
 }

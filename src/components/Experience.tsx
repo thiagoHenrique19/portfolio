@@ -1,136 +1,72 @@
-import { useInView } from '../hooks/useInView';
-import { Briefcase, Calendar } from 'lucide-react';
+import { SectionTitle } from './SectionTitle';
+import { Reveal } from './Reveal';
+import { tech, TechIcon, Tech } from './icons';
 
-interface Experience {
-  role: string;
-  company: string;
-  period: string;
-  description: string;
-  tags: string[];
-  highlight?: boolean;
-}
-
-const experiences: Experience[] = [
-    {
+const experiences: { role: string; period: string; description: string; items: Tech[]; current?: boolean }[] = [
+  {
     role: 'Desenvolvedor de Software Jr',
-    company: "Segala's Alimentos",
     period: 'Atual',
     description:
-      'Como Desenvolvedor Jr, trabalho na criação e evolução de aplicações web utilizando Java e React. Minha atuação envolve o desenvolvimento de novas funcionalidades, ajustes em sistemas existentes e colaboração com a equipe durante o processo de construção e entrega das soluções.',
-    tags: ['Java', 'Spring', 'React', 'TypeScript', 'HTML5', 'CSS3', 'MySQL'],
-    highlight: true,
+      'Criação e evolução de aplicações web com Java e React. Novas funcionalidades, ajustes em sistemas existentes e trabalho em equipe da construção à entrega.',
+    items: [tech.java, tech.spring, tech.react, tech.ts, tech.mysql],
+    current: true,
   },
   {
     role: 'Assistente de Desenvolvimento',
-    company: "Segala's Alimentos",
-    period: '2024 - 2025',
+    period: '2024 — 2025',
     description:
-      'Aplicando todas as habilidades adquiridas no desenvolvimento de solucoes full-stack. Trabalhando com HTML5, CSS3, JavaScript e React no front-end, mantendo projetos back-end com Java e Spring.',
-    tags: ['Java', 'Spring', 'React', 'TypeScript', 'HTML5', 'CSS3', 'MySQL'],
+      'Soluções full-stack: HTML5, CSS3, JavaScript e React no front-end, e manutenção de projetos back-end com Java e Spring.',
+    items: [tech.java, tech.spring, tech.react, tech.js, tech.mysql],
   },
   {
-    role: 'Estagiario de Desenvolvimento',
-    company: "Segala's Alimentos",
+    role: 'Estagiário de Desenvolvimento',
     period: '2024',
     description:
-      'Desenvolvimento de aplicacoes com Java + Spring Framework. Criacao e manutencao de bancos de dados MySQL e PostgreSQL. Implementacao de testes unitarios com JUnit5. Uso do DBeaver, Linux e controle de versao com GitHub.',
-    tags: ['Java', 'Spring Framework', 'MySQL', 'PostgreSQL', 'JUnit5', 'GitHub'],
+      'Aplicações com Java e Spring Framework. Bancos MySQL e PostgreSQL, testes unitários com JUnit5, DBeaver, Linux e GitHub.',
+    items: [tech.java, tech.spring, tech.postgres, tech.junit, tech.github],
   },
   {
     role: 'Aprendiz de Desenvolvimento',
-    company: "Segala's Alimentos",
     period: '2023',
     description:
-      'Inicio da jornada profissional com aprendizado de Java e logica de programacao. Primeiros contatos com banco de dados MySQL e PostgreSQL. Desenvolvimento dos primeiros testes unitarios com JUnit5.',
-    tags: ['Java', 'MySQL', 'PostgreSQL', 'JUnit5', 'Logica de Programacao'],
+      'Início da carreira com Java e lógica de programação. Primeiros contatos com bancos de dados e testes unitários.',
+    items: [tech.java, tech.mysql, tech.postgres, tech.junit],
   },
 ];
 
 export function Experience() {
-  const { ref, inView } = useInView();
-
   return (
-    <section id="experiencia" className="py-14 bg-dark-800 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
+    <section id="experiencia" className="w-[90%] max-w-3xl mx-auto py-10 md:py-12">
+      <SectionTitle desc="Minha trajetória na Segala's Alimentos, de aprendiz a desenvolvedor.">
+        Experiência
+      </SectionTitle>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 text-sm font-mono text-primary-400 mb-3">
-            <span className="w-8 h-px bg-primary-400 inline-block" />
-            <Briefcase className="w-4 h-4" />
-            experiencia
-            <span className="w-8 h-px bg-primary-400 inline-block" />
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">
-            Trajetoria <span className="gradient-text">Profissional</span>
-          </h2>
-        </div>
-
-        <div
-          ref={ref}
-          className="relative space-y-5 pl-8 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-gradient-to-b before:from-primary-500/80 before:via-accent-500/50 before:to-transparent"
-        >
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className={`relative transition-all duration-700 ${
-                inView
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 translate-x-8'
+      <div className="relative pl-8 border-l border-line space-y-6">
+        {experiences.map((e, i) => (
+          <Reveal key={e.role} delay={i * 80}>
+          <div className="card-lift relative bg-card border border-line rounded-2xl p-6">
+            <span
+              className={`absolute -left-[2.45rem] top-8 w-3 h-3 rounded-full border-2 border-bg ${
+                e.current ? 'bg-white' : 'bg-mute'
               }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
             >
-              {/* Timeline dot */}
-              <div
-                className={`absolute -left-[2.15rem] top-6 w-4 h-4 rounded-full border-2 transition-all duration-300 ${
-                  exp.highlight
-                    ? 'bg-primary-500 border-primary-400 shadow-lg shadow-primary-500/50'
-                    : 'bg-dark-700 border-white/20'
-                }`}
-              />
-
-              <div
-                className={`glass p-6 rounded-2xl border transition-all duration-300 card-hover ${
-                  exp.highlight
-                    ? 'border-primary-500/40 bg-primary-500/5'
-                    : 'border-white/10'
-                }`}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-bold text-white">{exp.role}</h3>
-                      {exp.highlight && (
-                        <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-accent-500/20 text-accent-400 border border-accent-500/30">
-                          Atual
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-primary-400 font-medium text-sm">{exp.company}</p>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-white/40 text-sm flex-shrink-0">
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span className="font-mono">{exp.period}</span>
-                  </div>
-                </div>
-
-                <p className="text-white/60 text-sm leading-relaxed mb-4">{exp.description}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-mono px-2.5 py-1 rounded-lg bg-white/5 text-white/50 border border-white/10 hover:text-white/80 hover:border-white/20 transition-colors"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              {e.current && <span className="absolute -inset-1 rounded-full bg-white animate-ping opacity-50" />}
+            </span>
+            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+              <h3 className="font-bold text-lg">{e.role}</h3>
+              <span className={`text-xs rounded-full px-3 py-1 border ${e.current ? 'bg-white text-black border-white font-medium' : 'text-mute border-line font-light'}`}>
+                {e.period}
+              </span>
             </div>
-          ))}
-        </div>
+            <p className="font-light text-sm text-soft leading-relaxed mb-4">{e.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {e.items.map((t) => (
+                <TechIcon key={t.name} t={t} />
+              ))}
+            </div>
+          </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

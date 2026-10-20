@@ -1,69 +1,47 @@
-import { useInView } from '../hooks/useInView';
-import { MessageSquare, Mail, Github } from 'lucide-react';
+import { SectionTitle } from './SectionTitle';
+import { Reveal } from './Reveal';
+import { Github } from 'lucide-react';
+import gmail from '../assets/gmail.png';
 
 export function Contact() {
-  const { ref, inView } = useInView();
-
   return (
-    <section id="contato" className="py-14 bg-dark-800 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
+    <section id="contato" className="w-[90%] max-w-3xl mx-auto py-10 md:py-12">
+      <SectionTitle desc="Saiba mais sobre meu trabalho ou fale comigo pelos canais abaixo. Estou aberto a propostas full-time e freelance.">
+        Contatos
+      </SectionTitle>
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <span className="inline-flex items-center gap-2 text-sm font-mono text-primary-400 mb-3">
-            <span className="w-8 h-px bg-primary-400 inline-block" />
-            <MessageSquare className="w-4 h-4" />
-            contato
-            <span className="w-8 h-px bg-primary-400 inline-block" />
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">
-            Entre em <span className="gradient-text">contato</span>
-          </h2>
-          <p className="text-white/50 mt-4 max-w-xl mx-auto">
-            Estou disponivel para novos projetos e oportunidades. Entre em contato pelos canais abaixo!
-          </p>
-        </div>
-
-        <div
-          ref={ref}
-          className={`flex flex-col gap-6 transition-all duration-1000 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="glass p-6 rounded-2xl border border-white/10 card-hover">
-            <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
-            <a
-              href="mailto:thiagohenriquedeoliveira015@gmail.com"
-              className="flex items-center gap-3 text-white/60 hover:text-primary-400 transition-colors text-sm"
-            >
-              <Mail className="w-5 h-5 flex-shrink-0" />
-              <span>thiagohenriquedeoliveira015@gmail.com</span>
-            </a>
+      <div className="border-t border-line">
+        <Reveal className="py-6 border-b border-line">
+          <div className="flex items-center gap-3 mb-2">
+            <img src={gmail} alt="Gmail" className="w-8 h-8 object-contain bg-[#ececec] rounded-md p-1" />
+            <h3 className="font-bold text-xl">Email</h3>
           </div>
+          <p className="font-light text-mute text-sm mb-4">thiagohenriquedeoliveira015@gmail.com</p>
+          <a
+            href="mailto:thiagohenriquedeoliveira015@gmail.com"
+            className="inline-block bg-white text-black rounded-lg px-6 py-3 text-sm font-medium hover:bg-soft transition-colors"
+          >
+            Enviar mensagem
+          </a>
+        </Reveal>
 
-          <div className="glass p-6 rounded-2xl border border-white/10 card-hover">
-            <h3 className="text-lg font-semibold text-white mb-2">GitHub</h3>
-            <a
-              href="https://github.com/thiagoHenrique19"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-white/60 hover:text-primary-400 transition-colors text-sm"
-            >
-              <Github className="w-5 h-5 flex-shrink-0" />
-              <span>github.com/thiagoHenrique19</span>
-            </a>
-          </div>
-
-          <div className="glass p-6 rounded-2xl border border-accent-500/30 bg-accent-500/5">
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-accent-400 animate-pulse" />
-              <div>
-                <p className="text-white font-medium text-sm">Disponivel para oportunidades</p>
-                <p className="text-white/40 text-xs mt-1">Aberto a propostas full-time ou freelance</p>
-              </div>
+        <Reveal delay={100} className="py-6">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-8 h-8 bg-[#ececec] text-black rounded-md flex items-center justify-center">
+              <Github className="w-5 h-5" />
             </div>
+            <h3 className="font-bold text-xl">GitHub</h3>
           </div>
-        </div>
+          <p className="font-light text-mute text-sm mb-4">github.com/thiagoHenrique19</p>
+          <a
+            href="https://github.com/thiagoHenrique19"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-white text-black rounded-lg px-6 py-3 text-sm font-medium hover:bg-soft transition-colors"
+          >
+            Ver perfil
+          </a>
+        </Reveal>
       </div>
     </section>
   );
