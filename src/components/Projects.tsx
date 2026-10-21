@@ -1,4 +1,4 @@
-import { Github, Store, ShoppingCart, LogIn } from 'lucide-react';
+import { Github, Store, ShoppingCart, LogIn, LayoutDashboard } from 'lucide-react';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
 import { tech, TechIcon, Tech } from './icons';
@@ -7,9 +7,16 @@ const projects: { title: string; description: string; items: Tech[]; icon: React
   {
     title: "E-commerce Segala's Alimentos",
     description:
-      'Desenvolvimento e manutenção do e-commerce da empresa: novas features, correção de bugs e integração com sistemas internos.',
+      'Loja virtual usada pelos clientes da empresa. Atuo na evolução da plataforma: funcionalidades novas, correção de bugs e comunicação com os sistemas internos.',
     items: [tech.java, tech.spring, tech.mysql, tech.react, tech.ts],
     icon: ShoppingCart,
+  },
+  {
+    title: 'Painel Backoffice',
+    description:
+      'Painel interno que as equipes usam para gerenciar a operação. Ajudo a construí-lo e mantê-lo: recursos novos, bugs resolvidos e integrações com outros sistemas da casa.',
+    items: [tech.java, tech.spring, tech.mysql, tech.react, tech.ts],
+    icon: LayoutDashboard,
   },
   {
     title: 'Von Zu Hause',
@@ -33,7 +40,7 @@ export function Projects() {
     <section id="projetos" className="w-[90%] max-w-5xl mx-auto py-10 md:py-12">
       <SectionTitle desc="Veja alguns dos projetos que desenvolvi.">Projetos</SectionTitle>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 gap-6">
         {projects.map((p, i) => (
           <Reveal key={p.title} delay={i * 100} className="h-full">
           <article className="card-lift group bg-card border border-line rounded-2xl p-5 flex flex-col text-center h-full">
