@@ -19,9 +19,14 @@ const groups: { title: string; desc: string; items: Tech[] }[] = [
     items: [tech.mysql, tech.postgres, tech.dbeaver],
   },
   {
+    title: 'Cloud e Infraestrutura',
+    desc: 'Containers com Docker e serviços de nuvem na AWS.',
+    items: [tech.aws, tech.docker],
+  },
+  {
     title: 'Ferramentas',
     desc: 'Versionamento, ambiente de desenvolvimento e sistema operacional do dia a dia.',
-    items: [tech.git, tech.github, tech.linux, tech.intellij],
+    items: [tech.git, tech.github, tech.linux, tech.apple, tech.intellij],
   },
 ];
 

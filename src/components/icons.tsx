@@ -24,6 +24,9 @@ export const tech = {
   git: { name: 'Git', src: icon('git') },
   github: { name: 'GitHub', src: icon('github') },
   linux: { name: 'Linux', src: icon('linux') },
+  aws: { name: 'AWS', src: icon('amazonwebservices', 'original-wordmark') },
+  docker: { name: 'Docker', src: icon('docker') },
+  apple: { name: 'Apple', src: icon('apple') },
   intellij: { name: 'IntelliJ IDEA', src: icon('intellij') },
 } satisfies Record<string, Tech>;
 
