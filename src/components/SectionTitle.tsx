@@ -1,10 +1,11 @@
 import { Reveal } from './Reveal';
 
-export function SectionTitle({ children, desc }: { children: string; desc?: string }) {
+export function SectionTitle({ index, children, desc }: { index: string; children: string; desc?: string }) {
   return (
-    <Reveal className="mb-6">
-      <h2 className="title text-3xl sm:text-4xl font-bold">{children}</h2>
-      {desc && <p className="font-light text-mute mt-4 max-w-xl">{desc}</p>}
+    <Reveal className="mb-10 md:mb-14">
+      <p className="font-mono text-xs text-accent tracking-wider mb-4">{index} /</p>
+      <h2 className="display text-4xl sm:text-6xl font-bold">{children}</h2>
+      {desc && <p className="text-mute mt-5 max-w-xl leading-relaxed">{desc}</p>}
     </Reveal>
   );
 }

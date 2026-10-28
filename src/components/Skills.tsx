@@ -1,6 +1,6 @@
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
-import { tech, TechIcon, Tech } from './icons';
+import { tech, TechIcon, Tech, sortTech } from './icons';
 
 const groups: { title: string; desc: string; items: Tech[] }[] = [
   {
@@ -15,8 +15,8 @@ const groups: { title: string; desc: string; items: Tech[] }[] = [
   },
   {
     title: 'Banco de Dados',
-    desc: 'Modelagem, consultas e manutenção de bancos relacionais.',
-    items: [tech.mysql, tech.postgres, tech.dbeaver],
+    desc: 'Modelagem, consultas e manutenção de bancos relacionais: MySQL, PostgreSQL e Oracle.',
+    items: [tech.mysql, tech.postgres, tech.oracle, tech.dbeaver],
   },
   {
     title: 'Cloud e Infraestrutura',
@@ -24,32 +24,36 @@ const groups: { title: string; desc: string; items: Tech[] }[] = [
     items: [tech.aws, tech.docker],
   },
   {
-    title: 'Ferramentas',
-    desc: 'Versionamento, ambiente de desenvolvimento e sistema operacional do dia a dia.',
-    items: [tech.git, tech.github, tech.linux, tech.apple, tech.intellij],
+    title: 'Ferramentas e Sistemas',
+    desc: 'Versionamento, ambiente de desenvolvimento e sistemas operacionais do dia a dia.',
+    items: [tech.git, tech.github, tech.intellij, tech.windows, tech.linux, tech.apple],
   },
 ];
 
 export function Skills() {
   return (
-    <section id="habilidades" className="w-[90%] max-w-3xl mx-auto py-10 md:py-12">
-      <SectionTitle desc="Confira as tecnologias que utilizo no dia a dia e nos meus projetos.">
-        Habilidades
+    <section id="habilidades" className="w-[90%] max-w-6xl mx-auto py-16 md:py-24 border-t border-line">
+      <SectionTitle index="02" desc="As tecnologias que uso no dia a dia e nos meus projetos.">
+        Stack
       </SectionTitle>
 
-      <div className="border-t border-line">
+      <div className="border-t border-line [&>div:last-child]:border-b-0">
         {groups.map((g, i) => (
-          <Reveal key={g.title} delay={i * 60} className="group py-6 border-b border-line">
-            <div className="flex items-baseline gap-3 mb-4">
-              <span className="font-mono text-xs text-mute">0{i + 1}</span>
-              <h3 className="title text-xl font-bold">{g.title}</h3>
+          <Reveal key={g.title} delay={i * 50} className="row grid md:grid-cols-[14rem_1fr] gap-x-10 gap-y-4 py-7 border-b border-line">
+            <div>
+              <span className="font-mono text-xs text-accent">0{i + 1}</span>
+              <h3 className="text-xl font-semibold mt-1">{g.title}</h3>
             </div>
-            <div className="flex flex-wrap gap-3 mb-4">
-              {g.items.map((t) => (
-                <TechIcon key={t.name} t={t} />
-              ))}
+            <div>
+              <p className="text-mute text-sm leading-relaxed mb-4 max-w-lg">{g.desc}</p>
+              <ul className="flex flex-wrap gap-2">
+                {sortTech(g.items).map((t) => (
+                  <li key={t.name}>
+                    <TechIcon t={t} />
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="font-light text-mute text-sm">{g.desc}</p>
           </Reveal>
         ))}
       </div>

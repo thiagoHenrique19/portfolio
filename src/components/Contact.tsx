@@ -1,48 +1,59 @@
+import { useState } from 'react';
+import { Github, Mail, Copy, Check } from 'lucide-react';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
-import { Github } from 'lucide-react';
-import gmail from '../assets/gmail.png';
+
+const EMAIL = 'thiagohenriquedeoliveira015@gmail.com';
 
 export function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${EMAIL}`;
+    }
+  };
+
   return (
-    <section id="contato" className="w-[90%] max-w-3xl mx-auto py-10 md:py-12">
-      <SectionTitle desc="Saiba mais sobre meu trabalho ou fale comigo pelos canais abaixo. Estou aberto a propostas full-time e freelance.">
-        Contatos
-      </SectionTitle>
+    <section id="contato" className="w-[90%] max-w-6xl mx-auto py-16 md:py-24 border-t border-line">
+      <SectionTitle index="05">Vamos conversar</SectionTitle>
 
-      <div className="border-t border-line">
-        <Reveal className="py-6 border-b border-line">
-          <div className="flex items-center gap-3 mb-2">
-            <img src={gmail} alt="Gmail" className="w-8 h-8 object-contain bg-[#ececec] rounded-md p-1" />
-            <h3 className="font-bold text-xl">Email</h3>
-          </div>
-          <p className="font-light text-mute text-sm mb-4">thiagohenriquedeoliveira015@gmail.com</p>
-          <a
-            href="mailto:thiagohenriquedeoliveira015@gmail.com"
-            className="inline-block bg-white text-black rounded-lg px-6 py-3 text-sm font-medium hover:bg-soft transition-colors"
-          >
-            Enviar mensagem
+      <Reveal>
+        <p className="text-mute max-w-xl leading-relaxed">
+          Estou aberto a propostas full-time e freelance. O e-mail é o caminho mais rápido.
+        </p>
+
+        <a
+          href={`mailto:${EMAIL}`}
+          className="block display font-semibold text-[clamp(1.35rem,4.6vw,3.5rem)] mt-8 break-all hover:text-accent transition-colors"
+          style={{ lineHeight: 1.1 }}
+        >
+          {EMAIL}
+        </a>
+
+        <div className="flex flex-wrap gap-3 mt-10">
+          <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 bg-accent text-bg font-semibold text-sm px-6 h-12 rounded-full hover:brightness-110 transition">
+            <Mail className="w-4 h-4" /> Enviar mensagem
           </a>
-        </Reveal>
-
-        <Reveal delay={100} className="py-6">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-8 h-8 bg-[#ececec] text-black rounded-md flex items-center justify-center">
-              <Github className="w-5 h-5" />
-            </div>
-            <h3 className="font-bold text-xl">GitHub</h3>
-          </div>
-          <p className="font-light text-mute text-sm mb-4">github.com/thiagoHenrique19</p>
+          <button onClick={copy} className="inline-flex items-center gap-2 border border-line text-sm px-5 h-12 rounded-full hover:border-ink transition-colors">
+            {copied ? <Check className="w-4 h-4 text-accent" /> : <Copy className="w-4 h-4" />}
+            {copied ? 'E-mail copiado' : 'Copiar e-mail'}
+          </button>
           <a
             href="https://github.com/thiagoHenrique19"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-white text-black rounded-lg px-6 py-3 text-sm font-medium hover:bg-soft transition-colors"
+            className="inline-flex items-center gap-2 border border-line text-sm px-5 h-12 rounded-full hover:border-ink transition-colors"
           >
-            Ver perfil
+            <Github className="w-4 h-4" /> github.com/thiagoHenrique19
           </a>
-        </Reveal>
-      </div>
+        </div>
+        <p className="sr-only" role="status" aria-live="polite">{copied ? 'E-mail copiado' : ''}</p>
+      </Reveal>
     </section>
   );
 }

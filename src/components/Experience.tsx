@@ -1,6 +1,6 @@
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
-import { tech, TechIcon, Tech } from './icons';
+import { tech, TechIcon, Tech, sortTech } from './icons';
 
 const experiences: { role: string; period: string; description: string; items: Tech[]; current?: boolean }[] = [
   {
@@ -8,7 +8,7 @@ const experiences: { role: string; period: string; description: string; items: T
     period: 'Atual',
     description:
       'Criação e evolução de aplicações web com Java e React. Novas funcionalidades, ajustes em sistemas existentes e trabalho em equipe da construção à entrega.',
-    items: [tech.java, tech.spring, tech.react, tech.ts, tech.mysql],
+    items: [tech.java, tech.spring, tech.react, tech.ts, tech.mysql, tech.aws],
     current: true,
   },
   {
@@ -36,37 +36,43 @@ const experiences: { role: string; period: string; description: string; items: T
 
 export function Experience() {
   return (
-    <section id="experiencia" className="w-[90%] max-w-3xl mx-auto py-10 md:py-12">
-      <SectionTitle desc="Minha trajetória na Segala's Alimentos, de aprendiz a desenvolvedor.">
+    <section id="experiencia" className="w-[90%] max-w-6xl mx-auto py-16 md:py-24 border-t border-line">
+      <SectionTitle index="03" desc="Minha trajetória na Segala's Alimentos, de aprendiz a desenvolvedor.">
         Experiência
       </SectionTitle>
 
-      <div className="relative pl-8 border-l border-line space-y-6">
+      <p className="font-mono text-xs text-mute mb-6">
+        <span className="text-accent">$</span> git log --career
+      </p>
+
+      <ol>
         {experiences.map((e, i) => (
-          <Reveal key={e.role} delay={i * 80}>
-          <div className="card-lift relative bg-card border border-line rounded-2xl p-6">
-            <span
-              className={`absolute -left-[2.45rem] top-8 w-3 h-3 rounded-full border-2 border-bg ${
-                e.current ? 'bg-white' : 'bg-mute'
-              }`}
-            >
-            </span>
-            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-              <h3 className="font-bold text-lg">{e.role}</h3>
-              <span className={`text-xs rounded-full px-3 py-1 border ${e.current ? 'bg-white text-black border-white font-medium' : 'text-mute border-line font-light'}`}>
-                {e.period}
-              </span>
-            </div>
-            <p className="font-light text-sm text-soft leading-relaxed mb-4">{e.description}</p>
-            <div className="flex flex-wrap gap-2">
-              {e.items.map((t) => (
-                <TechIcon key={t.name} t={t} />
-              ))}
-            </div>
-          </div>
+          <Reveal key={e.role} delay={i * 60}>
+            <li className="grid md:grid-cols-[10rem_1fr]">
+              <p className={`font-mono text-sm pt-8 md:py-8 ${e.current ? 'text-accent' : 'text-mute'}`}>{e.period}</p>
+              <div className="relative md:border-l border-line md:pl-10 pt-3 pb-8 md:py-8">
+                <span
+                  className={`hidden md:block absolute -left-[6px] top-[2.55rem] w-[11px] h-[11px] rounded-full border-2 ${
+                    e.current ? 'bg-accent border-accent' : 'bg-bg border-mute'
+                  }`}
+                  aria-hidden="true"
+                />
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="text-xl sm:text-2xl font-semibold">{e.role}</h3>
+                </div>
+                <p className="text-soft text-sm sm:text-base leading-relaxed mt-3 max-w-2xl">{e.description}</p>
+                <ul className="flex flex-wrap gap-2 mt-5">
+                  {sortTech(e.items).map((t) => (
+                    <li key={t.name}>
+                      <TechIcon t={t} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
           </Reveal>
         ))}
-      </div>
+      </ol>
     </section>
   );
 }
