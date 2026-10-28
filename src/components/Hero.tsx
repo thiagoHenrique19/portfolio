@@ -151,7 +151,7 @@ export function Hero() {
             </h1>
 
             <p className="text-xl sm:text-2xl font-medium mt-8 max-w-xl leading-snug">
-              Desenvolvedor full stack. Java e Spring no servidor, React e TypeScript na tela.
+              Desenvolvedor full stack. Java e Spring, React e TypeScript
             </p>
             <p className="text-mute mt-4 max-w-lg leading-relaxed">
               Trabalho no e-commerce da Segala's Alimentos: funcionalidades, correções e integrações usadas pelos clientes todos os dias.
